@@ -1,15 +1,14 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database');
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("../config/database");
 
-const Car = sequelize.define('Car', {
+const Booking = sequelize.define("Booking", {
   id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-  name: { type: DataTypes.STRING, allowNull: false },
-  brand: { type: DataTypes.STRING, allowNull: false },
-  model: { type: DataTypes.STRING, allowNull: false },
-  year: { type: DataTypes.INTEGER, allowNull: false },
-  pricePerDay: { type: DataTypes.FLOAT, allowNull: false },
-  available: { type: DataTypes.BOOLEAN, defaultValue: true },
-  imageUrl: { type: DataTypes.STRING, allowNull: true }
-}, { timestamps: true });
+  userId: { type: DataTypes.INTEGER, allowNull: false },
+  carId: { type: DataTypes.INTEGER, allowNull: false },
+  startDate: { type: DataTypes.DATE, allowNull: false },
+  endDate: { type: DataTypes.DATE, allowNull: false },
+  totalPrice: { type: DataTypes.FLOAT, allowNull: false },
+  status: { type: DataTypes.ENUM("pending", "confirmed", "cancelled"), defaultValue: "pending" },
+});
 
-module.exports = Car;
+module.exports = Booking;

@@ -1,8 +1,8 @@
 const { sequelize } = require("../config/database");
-const User = require("./User");
-const Car = require("./Car");
-const Booking = require("./Booking");
-const Payment = require("./Payment");
+const User = require("./user");
+const Car = require("./car");
+const Booking = require("./booking");
+const Payment = require("./payment");
 
 // Relationships
 User.hasMany(Booking, { foreignKey: "userId", onDelete: "CASCADE" });
