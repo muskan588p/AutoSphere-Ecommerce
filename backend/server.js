@@ -11,6 +11,10 @@ app.use("/cars", carRoutes);
 app.use("/bookings", bookingRoutes);
 app.use("/payments", paymentRoutes);
 
+app.get("/",  (req, res) => {
+  res.send("Welcome to the Car Rental API!");
+});
+
 const PORT = process.env.PORT || 5000;
 
 sequelize.sync().then(() => {
