@@ -25,7 +25,7 @@ exports.bookCar = async (req, res) => {
     // Mark Car as Unavailable
     await Car.update({ available: false }, { where: { id: carId } });
 
-    res.status(201).json(booking);
+    res.status(201).json(booking);  //new booking as a JSON response
   } catch (error) {
     res.status(500).json({ error: "Failed to book car" });
   }
@@ -34,15 +34,15 @@ exports.bookCar = async (req, res) => {
 
 exports.cancelBooking = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params; //to extract id from the request URL
     const booking = await Booking.findByPk(id);
 
     if (!booking) return res.status(404).json({ error: "Booking not found" });
 
-    // Update car availability
+    //update car availability after cancelling
     await Car.update({ available: true }, { where: { id: booking.carId } });
 
-    // Delete booking
+    //delete booking
     await booking.destroy();
     
     res.json({ message: "Booking cancelled successfully" });
