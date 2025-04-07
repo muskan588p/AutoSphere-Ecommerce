@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
+import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
 import ResponsiveMenu from "./ResponsiveMenu";
 
 export const Navlinks = [
@@ -25,7 +26,7 @@ export const Navlinks = [
   },
 ];
 
-const Navbar = () => {
+const Navbar = ({theme, setTheme}) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const toggleMenu = () => {
