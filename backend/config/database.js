@@ -1,5 +1,4 @@
 const { Sequelize } = require("sequelize");
-// require("dotenv").config("../.env"); 
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
@@ -14,7 +13,6 @@ const sequelize = new Sequelize(
     port: process.env.DB_PORT,
   }
 );
-
 // Test Database Connection
 (async () => {
   try {
