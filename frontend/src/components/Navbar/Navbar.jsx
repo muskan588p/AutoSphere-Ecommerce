@@ -51,6 +51,19 @@ const Navbar = () => {
                   </a>
                 </li>
               ))}
+              
+              {/* DarkMode feature implement */}
+              {theme === "dark" ? (
+                <BiSolidSun
+                  onClick={() => setTheme("light")}
+                  className="text-2xl"
+                />
+              ) : (
+                <BiSolidMoon
+                  onClick={() => setTheme("dark")}
+                  className="text-2xl"
+                />
+              )}
             </ul>
           </nav>
           {/* Mobile view  */}
