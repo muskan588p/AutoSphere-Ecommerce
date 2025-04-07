@@ -51,7 +51,7 @@ const Navbar = () => {
                   </a>
                 </li>
               ))}
-              
+
               {/* DarkMode feature implement */}
               {theme === "dark" ? (
                 <BiSolidSun
@@ -68,6 +68,17 @@ const Navbar = () => {
           </nav>
           {/* Mobile view  */}
           <div className="flex items-center gap-4 md:hidden">
+          {theme === "dark" ? (
+              <BiSolidSun
+                onClick={() => setTheme("light")}
+                className="text-2xl"
+              />
+            ) : (
+              <BiSolidMoon
+                onClick={() => setTheme("dark")}
+                className="text-2xl"
+              />
+            )}
             {/* Mobile Hamburger icon */}
             {showMenu ? (
               <HiMenuAlt1
