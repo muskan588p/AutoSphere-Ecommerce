@@ -1,10 +1,16 @@
 import React, { Component, useEffect, useState } from "react";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 // Component import
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
+
+// Page imports
+import Login from "./components/pages/Login";
+import Signup from "./components/pages/Signup";
 
 const App = () => {
   // dark mode start
@@ -41,7 +47,12 @@ const App = () => {
   return (
     <div className="bg-white dark:bg-black dark:text-white text-black overflow-x-hidden">
       <Navbar theme={theme} setTheme={setTheme} />
-      <Hero theme={theme} />      
+      <Routes>
+          <Route path="/" element={<Hero theme={theme} />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      {/* <Hero theme={theme} />       */}
     </div>
   );
 };

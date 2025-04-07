@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
-// import carPng from "../../assets/car.png";
+import { useNavigate } from "react-router-dom";
+import carPng from "../../assets/car.png";
 import yellowCar from "../../assets/car2.png";
 import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Hero = ({ theme }) => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     AOS.refresh();
-  });
+  }, []);
+
   return (
     <div className="dark:bg-black dark:text-white duration-300 ">
       <div className="container min-h-[620px] flex">
@@ -40,9 +45,10 @@ const Hero = ({ theme }) => {
             <button
               data-aos="fade-up"
               data-aos-delay="1500"
-              onClick={() => {
-                AOS.refreshHard();
-              }}
+              // onClick={() =>  {
+              //   AOS.refreshHard();
+              // }}
+              onClick={() => navigate("/login")}
               className="rounded-md bg-primary hover:bg-primary/80 transition duration-500 py-2 px-6 text-black"
             >
               Get Started
