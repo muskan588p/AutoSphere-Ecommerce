@@ -40,7 +40,7 @@ const Hero = ({ theme }) => {
               Car Rental
             </h1>
             <p data-aos="fade-up" data-aos-delay="1000">
-              Our website{" "}
+            Drive Your Dreams: Affordable Car Rentals, Anytime, Anywhere. Your perfect ride is just a click away!{" "}
             </p>
             <button
               data-aos="fade-up"
