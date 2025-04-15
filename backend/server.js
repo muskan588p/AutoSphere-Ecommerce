@@ -3,10 +3,14 @@ const { sequelize } = require("./config/database");
 const carRoutes = require("./routes/carRoute");
 const bookingRoutes = require("./routes/bookingRoute");
 const paymentRoutes = require("./routes/paymentRoute");
+const authRoutes = require("./routes/auth");
+
+require("dotenv").config();
 
 const app = express();
 app.use(express.json());
 
+app.use("/api/auth", authRoutes); 
 app.use("/cars", carRoutes);
 app.use("/bookings", bookingRoutes);
 app.use("/payments", paymentRoutes);
@@ -17,6 +21,11 @@ app.get("/",  (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-sequelize.sync().then(() => {
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-});
+sequelize.sync({ alter: true }) // adjust as needed
+  .then(() => {
+    console.log("Database synced");
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  })
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
+  });
