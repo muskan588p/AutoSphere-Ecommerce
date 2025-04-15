@@ -44,7 +44,7 @@ const Login = () => {
 
           {error && <p className="text-red-500">{error}</p>}
 
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <input
               type="email"
               placeholder="Email"

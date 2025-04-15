@@ -4,11 +4,16 @@ const carRoutes = require("./routes/carRoute");
 const bookingRoutes = require("./routes/bookingRoute");
 const paymentRoutes = require("./routes/paymentRoute");
 const authRoutes = require("./routes/auth");
+const cors = require('cors');
 
 require("dotenv").config();
-
 const app = express();
+// Middleware
+app.use(cors()); // 👈 Allow requests from frontend
 app.use(express.json());
+
+// const app = express();
+// app.use(express.json());
 
 app.use("/api/auth", authRoutes); 
 app.use("/cars", carRoutes);
