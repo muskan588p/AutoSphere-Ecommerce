@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import carPng from "../../assets/car.png";
-import yellowCar from "../../assets/car2.png";
+import carPng from "../../../assets/car.png";
+import yellowCar from "../../../assets/car2.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 

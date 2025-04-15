@@ -5,12 +5,14 @@ const bookingRoutes = require("./routes/bookingRoute");
 const paymentRoutes = require("./routes/paymentRoute");
 const authRoutes = require("./routes/auth");
 const cors = require('cors');
+const dotenv=require('dotenv');
+dotenv.config();
 
-require("dotenv").config();
+// require("dotenv").config();
 const app = express();
-// Middleware
-app.use(cors()); // 👈 Allow requests from frontend
-app.use(express.json());
+
+app.use(cors());
+app.use(express.json()); // Middleware to parse JSON bodies
 
 // const app = express();
 // app.use(express.json());

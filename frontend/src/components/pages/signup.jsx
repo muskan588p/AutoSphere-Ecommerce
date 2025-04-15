@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import yellowCar from "../../assets/car2.png";
+import yellowCar from "../../../assets/car2.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 //   }, []);
 
 const Signup = () => {
-  const [name, setName] = useState("");
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,9 +25,10 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("/api/auth/register", { name, email, password });
+      const response = await axios.post("http://localhost:5000/api/auth/register", { username, email, password });
       localStorage.setItem("token", response.data.token); // Store JWT token in localStorage
-      navigate("/dashboard"); // Redirect to dashboard
+      alert("User registered successfully!");
+      navigate("/login");
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred.");
     }
@@ -48,8 +49,8 @@ const Signup = () => {
               type="text"
               placeholder="Full Name"
               className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={username}
+              onChange={(e) => setUserName(e.target.value)}
               required
             />
             <input

@@ -7,6 +7,12 @@ import "aos/dist/aos.css";
 // Component import
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
+import Services from "./components/Services/Services";
+import CarList from "./components/CarList/CarList";
+import About from "./components/About/About";
+import Experience from "./components/Experience/Experience";
+import Testimonial from "./components/Testimonial/Testimonial";
+import Footer from "./components/Footer/Footer";
 
 // Page imports
 import Login from "./components/pages/Login";
@@ -47,12 +53,30 @@ const App = () => {
   return (
     <div className="bg-white dark:bg-black dark:text-white text-black overflow-x-hidden">
       <Navbar theme={theme} setTheme={setTheme} />
+      
       <Routes>
-          <Route path="/" element={<Hero theme={theme} />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-      {/* <Hero theme={theme} />       */}
+        {/* Home Page Route */}
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero theme={theme} />
+            </>
+          }
+        />
+  
+        {/* Auth Routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+
+      {/* Render other components outside Routes */}
+      <About />
+      <Services />
+      <CarList />
+      <Experience />
+      <Testimonial />
+      <Footer />
     </div>
   );
 };

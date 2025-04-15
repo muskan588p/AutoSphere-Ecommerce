@@ -1,43 +1,83 @@
 import React from "react";
-import CarPng from "../../assets/car1.png";
+import whiteCar from "../../../assets/white-car.png";
+import car2 from "../../../assets/car5.png";
+import car3 from "../../../assets/car6.png";
 
-const About = () => {
+const carList = [
+  {
+    name: "BMW UX",
+    price: 100,
+    image: whiteCar,
+    aosDelay: "0",
+  },
+  {
+    name: "KIA UX",
+    price: 140,
+    image: car2,
+    aosDelay: "500",
+  },
+  {
+    name: "BMW UX",
+    price: 100,
+    image: car3,
+    aosDelay: "1000",
+  },
+];
+
+const CarList = () => {
   return (
-    <div className="dark:bg-dark bg-slate-100 sm:min-h-[600px] sm:grid sm:place-items-center duration-300">
+    <div className="pb-24">
       <div className="container">
-        <div className="grid grid-cols-1 sm:grid-cols-2 place-items-center">
-          <div data-aos="slide-right" data-aos-duration="1500">
-            <img
-              src={CarPng}
-              alt=""
-              className="sm:scale-125 sm:-translate-x-11 max-h-[300px] drop-shadow-[2px_10px_6px_rgba(0,0,0,0.50)]"
-            />
-          </div>
-          <div>
-            <div className="space-y-5 sm:p-16 pb-6">
-              <h1
+        {/* Heading */}
+        <h1
+          data-aos="fade-up"
+          className="text-3xl sm:text-4xl font-semibold font-serif mb-3"
+        >
+          Lorem ipsum dolor
+        </h1>
+        <p data-aos="fade-up" aos-delay="400" className="text-sm pb-10">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor iure
+          nemo ab?
+        </p>
+        {/* Car listing */}
+        <div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16">
+            {carList.map((data) => (
+              <div
                 data-aos="fade-up"
-                className="text-3xl sm:text-4xl font-bold font-serif"
+                data-aos-delay={data.aosDelay}
+                className="space-y-3 border-2 border-gray-300 hover:border-primary p-3 rounded-xl relative group"
               >
-                About us
-              </h1>
-              <p data-aos="fade-up" className="leading-8 tracking-wide">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur, magnam! Tenetur odio quo et maxime?
-              </p>
-              <p data-aos="fade-up">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
-                tempora.
-              </p>
-              <button data-aos="fade-up" className="button-outline">
-                Get Started
-              </button>
-            </div>
+                <div className="w-full h-[120px]">
+                  <img
+                    src={data.image}
+                    alt=""
+                    className="w-full h-[120px] object-contain sm:translate-x-8 group-hover:sm:translate-x-16 duration-700"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <h1 className="text-primary font-semibold">{data.name}</h1>
+                  <div className="flex justify-between items-center text-xl font-semibold">
+                    <p>${data.price}/Day</p>
+                    <a href="#">Details</a>
+                  </div>
+                </div>
+                <p className="text-xl font-semibold absolute top-0 left-3">
+                  12Km
+                </p>
+              </div>
+            ))}
           </div>
+        </div>
+        {/* End of car listing */}
+        <div className="grid place-items-center mt-8">
+          <button data-aos="fade-up" className="button-outline">
+            Get Started
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default About;
+export default CarList;
