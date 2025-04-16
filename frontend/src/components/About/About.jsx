@@ -22,12 +22,11 @@ const About = () => {
                 About us
               </h1>
               <p data-aos="fade-up" className="leading-8 tracking-wide">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur, magnam! Tenetur odio quo et maxime?
+              We are committed to providing reliable, affordable, and comfortable car rental solutions to make your travel experience smooth and hassle-free. Whether you're planning a short trip, a business tour, or a weekend getaway, we offer a wide range of vehicles to suit your needs.
+                
               </p>
               <p data-aos="fade-up">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi,
-                tempora.
+              With easy booking, flexible plans, and top-notch customer support, we ensure that you hit the road with confidence.
               </p>
               <button data-aos="fade-up" className="button-outline">
                 Get Started

@@ -36,17 +36,19 @@ const Footer = () => {
               Car Rental
             </h1>
             <p className="text-sm">
-              Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Possimus, voluptate.{" "}
+            © 2025 CarRentalCo. All rights reserved.
+Providing safe, reliable, and affordable car rentals for every journey.
+Follow us on
+📍 Facebook | 📍 Instagram | 📍 Twitter
             </p>
             <br />
             <div className="flex items-center gap-3">
               <FaLocationArrow />
-              <p>Noida, Uttar Pradesh</p>
+              <p>Mohali, Punjab</p>
             </div>
             <div className="flex items-center gap-3 mt-3">
               <FaMobileAlt />
-              <p>+91 123456789</p>
+              <p>+91 6991900039</p>
             </div>
             {/* Social Handle */}
             <div className="flex items-center gap-3 mt-6">
