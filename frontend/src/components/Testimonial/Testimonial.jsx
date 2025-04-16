@@ -36,7 +36,7 @@ const Testimonial = () => {
             </p>
             <p data-aos="fade-up" className="text-center sm:px-44">
             Our customers love the comfort, convenience, and service we provide.
-Here’s what they’re saying:
+            Here’s what they’re saying:
 
     
             </p>

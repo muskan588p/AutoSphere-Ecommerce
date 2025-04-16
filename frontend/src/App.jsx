@@ -50,35 +50,33 @@ const App = () => {
     AOS.refresh();
   }, []);
 
-  return (
-    <div className="bg-white dark:bg-black dark:text-white text-black overflow-x-hidden">
-      <Navbar theme={theme} setTheme={setTheme} />
-      
-      <Routes>
-        {/* Home Page Route */}
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero theme={theme} />
-            </>
-          }
-        />
-  
-        {/* Auth Routes */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
-
-      {/* Render other components outside Routes */}
-      <About />
-      <Services />
-      <CarList />
-      <Experience />
-      <Testimonial />
-      <Footer />
-    </div>
-  );
-};
-
-export default App;
+  // Define paths where you DON'T want to show common sections
+  const hideSectionsOnRoutes = ["/login", "/signup"];
+   const shouldHideSections = hideSectionsOnRoutes.includes(location.pathname);
+ 
+   return (
+     <div className="bg-white dark:bg-black dark:text-white text-black overflow-x-hidden">
+       <Navbar theme={theme} setTheme={setTheme} />
+ 
+       <Routes>
+         <Route path="/" element={<Hero theme={theme} />} />
+         <Route path="/login" element={<Login />} />
+         <Route path="/signup" element={<Signup />} />
+       </Routes>
+ 
+       {/* Render these components only on the home page */}
+       {!shouldHideSections && (
+         <>
+           <About />
+           <Services />
+           <CarList />
+           <Experience />
+           <Testimonial />
+           <Footer />
+         </>
+       )}
+     </div>
+   );
+ };
+ 
+ export default App;

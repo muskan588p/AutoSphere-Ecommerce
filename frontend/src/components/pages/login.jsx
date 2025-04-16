@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import yellowCar from "../../../assets/car2.png"; // or carPng if needed
+import yellowCar from "../../../assets/car2.png"; 
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; 
 
@@ -26,8 +26,10 @@ const Login = () => {
 
     try {
       const response = await axios.post("http://localhost:5000/api/auth/login", { email, password });
-      localStorage.setItem("token", response.data.token); // Store JWT token in localStorage
-      navigate("/"); // Redirect to the dashboard page after login
+      localStorage.setItem("token", response.data.token); 
+      localStorage.setItem("username", response.data.user.username);
+      navigate("/"); 
+      alert("User logged in successfully!");
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred.");
     }

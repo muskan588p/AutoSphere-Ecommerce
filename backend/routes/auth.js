@@ -9,10 +9,16 @@ router.post('/login', authController.login);
 
 // Protected route
 router.get('/profile', authMiddleware, (req, res) => {
-  res.json({
-    message: 'Welcome to your profile',
-    user: req.user
-  });
+  try{
+    res.json({
+      message: 'Welcome to your profile',
+      user: req.user
+    });
+  }catch(err){
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+  
 });
 
 module.exports = router;

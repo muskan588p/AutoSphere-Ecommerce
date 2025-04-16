@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
 import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
 import ResponsiveMenu from "./ResponsiveMenu";
+import { useNavigate } from "react-router-dom";  // For navigation after logout
 
 export const Navlinks = [
   {
@@ -26,12 +27,31 @@ export const Navlinks = [
   },
 ];
 
-const Navbar = ({theme, setTheme}) => {
+const Navbar = ({ theme, setTheme }) => {
   const [showMenu, setShowMenu] = useState(false);
+  const [username, setUsername] = useState("");  // State to hold the username
+  const navigate = useNavigate();  // Hook to navigate after logout
 
+  // Toggle the mobile menu
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
+
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);  
+
+  // // Logout function
+  // const handleLogout = () => {
+  //   localStorage.removeItem("username");
+  //   localStorage.removeItem("token");
+
+  //   navigate("/");  // Redirect to login page
+  // };
 
   return (
     <div className="relative z-10 shadow-md w-full dark:bg-black dark:text-white duration-300">
@@ -53,7 +73,13 @@ const Navbar = ({theme, setTheme}) => {
                 </li>
               ))}
 
-              {/* DarkMode feature implement */}
+              {username && (
+                <li className="py-4">
+                  <span className="text-lg font-medium">Welcome, {username}</span>
+                </li>
+              )}
+
+              {/* DarkMode feature implementation */}
               {theme === "dark" ? (
                 <BiSolidSun
                   onClick={() => setTheme("light")}
@@ -67,9 +93,10 @@ const Navbar = ({theme, setTheme}) => {
               )}
             </ul>
           </nav>
+
           {/* Mobile view  */}
           <div className="flex items-center gap-4 md:hidden">
-          {theme === "dark" ? (
+            {theme === "dark" ? (
               <BiSolidSun
                 onClick={() => setTheme("light")}
                 className="text-2xl"
