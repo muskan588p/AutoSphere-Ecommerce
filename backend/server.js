@@ -19,7 +19,8 @@ app.use(express.json()); // Middleware to parse JSON bodies
 
 app.use("/api/auth", authRoutes); 
 app.use("/cars", carRoutes);
-app.use("/bookings", bookingRoutes);
+// app.use("/bookings", bookingRoutes);
+app.use("/api/bookings", bookingRoutes);
 app.use("/payments", paymentRoutes);
 
 app.get("/",  (req, res) => {

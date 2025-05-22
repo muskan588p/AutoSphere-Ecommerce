@@ -54,6 +54,7 @@ const Navbar = ({ theme, setTheme }) => {
   // };
 
   return (
+    
     <div className="relative z-10 shadow-md w-full dark:bg-black dark:text-white duration-300">
       <div className="container py-2 md:py-0">
         <div className="flex justify-between items-center">
@@ -73,11 +74,30 @@ const Navbar = ({ theme, setTheme }) => {
                 </li>
               ))}
 
-              {username && (
+              {/* {username && (
                 <li className="py-4">
                   <span className="text-lg font-medium">Welcome, {username}</span>
                 </li>
+              )} */}
+              {username && (
+                <li className="py-4">
+                  <div className="flex items-center gap-4">
+                    <span className="text-lg font-medium text-black">Welcome, {username}</span>
+                    <button
+                      onClick={() => {
+                        localStorage.removeItem("username");
+                        localStorage.removeItem("token");
+                        setUsername("");
+                        navigate("/"); // redirect after logout
+                      }}
+                      className="bg-yellow-500 text-white px-3 py-1 rounded"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </li>
               )}
+
 
               {/* DarkMode feature implementation */}
               {theme === "dark" ? (
