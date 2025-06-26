@@ -7,7 +7,7 @@ const BookingPopup = ({ car, onClose }) => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
-  // Fetch user info from localStorage (assumes you store it at login)
+  // Fetch user info from localStorage 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
     const storedEmail = localStorage.getItem("email");
@@ -26,10 +26,8 @@ const BookingPopup = ({ car, onClose }) => {
       return;
     }
 
-    // Optional: Close popup before navigating
     onClose();
 // console.log(email)
-    // Navigate to booking summary
     navigate("/booking-summary", {
       state: {
         car,
@@ -96,12 +94,14 @@ const BookingPopup = ({ car, onClose }) => {
             </button>
 
             {/* Cancel Button */}
+
             <button
               type="button"
               onClick={onClose}
               className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500"
             >
               Cancel
+
             </button>
           </div>
         </form>

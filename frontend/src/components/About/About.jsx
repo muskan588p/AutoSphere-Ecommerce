@@ -30,6 +30,7 @@ const About = () => {
               </p>
               <button data-aos="fade-up" className="button-outline">
                 Get Started
+                
               </button>
             </div>
           </div>
